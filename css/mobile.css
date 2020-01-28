@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/* nav */
+/* 메뉴버튼 눌렀을 때 나오는 레이아웃 */
+nav{
+   /* 2depth메뉴가 펼쳐질때 nav높이를 벗어나면 스크롤 발생 */
+    overflow-y: auto;
+    position: fixed;
+    top:70px; 
+    left:-250px; 
+    bottom:0;   
+    width: 250px;
+    background: #2c2a29;
+    transition: left 0.5s;
+}
+/* 메뉴버튼 */
+.btn-menu{
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 25px; height: 25px;
+}
+
+.btn-menu span{
+    position: absolute;
+    width: 25px; height: 2px;
+    background: #fff;
+    transform-origin: 2px 1px;
+    transition: 0.5s;
+
+}
+.btn-menu span:nth-child(1){top: 4px;}
+.btn-menu span:nth-child(2){top: 50%; transform: translateY(-50%);}
+.btn-menu span:nth-child(3){bottom:4px;}
+
+#btn-menu:checked + label span:nth-child(1){transform: rotate(45deg);}
+#btn-menu:checked + label span:nth-child(2){opacity: 0;}
+#btn-menu:checked + label span:nth-child(3){transform: rotate(-45deg);}
+
+#btn-menu:checked ~ nav{left:0;}
+#btn-menu:checked ~ nav::after{
+    content: '';
+    position: fixed;
+    top: 70px; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+
+/* footer ================================== */
+
+.banner .wrap label::after{content:'\f04c';}
+#btn-banner:checked+label::after{content:'\f04b';}
+
+/* 배너 레이아웃 잡기 */
+.banner{
+   /* 70px높이를 가진 부모영역 */
+   position: relative;
+   height: 70px;
+   /* outline: 1px solid red; */
+}
+.banner .wrap{
+   /* 배너하나의 넓이 189px인데 
+      내가 최대치로 보여주고 싶은 넓이를 지정하고 
+      화면이 설정된 넓이보다 좁아지면 100%로 변경됨.
+   */
+   max-width:400px; margin: auto;
+   /* outline:1px solid blue; */
+   /* 배너가 흘러가는 모습을 400px정도의 넓이로 제한을 
+   해서 보여주고 영역을 벗어난 배너는 숨긴다 */
+   overflow: hidden;
+}
+.banner .wrap label{
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   bottom:5px;
+}
+.banner .wrap ul{
+   /* li를 가지고 있는 ul의 넓이를 지정 
+      배너하나당 넓이 189px * 배너의 총 개수 8 = ul의 넓이 */
+   width: 1512px;
+   /* 애니메이션 설정 */
+   animation: banner 10s linear infinite;
+}
+.banner .wrap ul li{float: left; width: auto;}
+.banner .wrap ul li img{display: block;}
+
+/* 체크박스가 체크되었을 때 ul의 상태 */
+#btn-banner:checked~ul{animation-play-state: paused;}
+
+/* 배너가 움직이는 애니메이션 */
+@keyframes banner{
+   0%{margin-left:0;}
+   /* 배너하나의 넓이*실제보여줄 배너의 개수 6=움직어야할 거리 */
+   100%{margin-left:-1134px;}
+}
+
+

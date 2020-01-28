@@ -1,0 +1,481 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+/* reset, common ============================================= */
+*{margin: 0; padding: 0;}
+body{font-family: 'Open Sans', sans-serif;}
+a{display: inline-block; color:#000; text-decoration: none;}
+button{border:0; outline: 0; background: none; cursor: pointer;}
+input[type=text]{border:0; box-sizing: border-box;}
+input[type=checkbox]{display: none;}
+li{list-style:none;}
+em{font-style: normal; font-weight: bold;}
+img{max-width: 100%;}
+label, span{display: inline-block;}
+.blind{position: absolute; left:-9999px; font-size: 0;}
+.container{position: relative; max-width: 1100px; margin: auto;}
+
+/* 모바일을 기준으로 공통소스를 작업 */
+/* header ========================================================= */
+
+header{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    background: #007042;
+    z-index: 100;
+}
+header .title h1{
+    color: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 1.5em;
+}
+
+/* nav */
+form{
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #3e3e3e;
+}
+form input{
+    width: 180px;
+    height: 30px;
+    padding: 0 40px 0 10px;
+
+}
+form button{
+    position: absolute;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: #007042;
+    color: #fff;
+}
+form button::after{
+    content: "\f002";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/* gnb */
+/* 1depth */
+.gnb>li{
+    position: relative;
+}
+.gnb>li>a{
+    position: relative;
+    display: block;
+    padding-left: 20px;
+    color: #eee;
+    line-height: 60px;
+}
+.gnb>li>a::after{
+    content: "\f078";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute; right: 20px;
+}
+.gnb>li:hover>a{background: #000;}
+.gnb>li:hover>a::after{content: "\f2d1"; font-size: 12px;}
+
+/* 2depth */
+.gnb ul{
+    overflow: hidden;
+    height: 0;
+    transition: height 0.5s;
+}
+.gnb ul li a{
+    display: block;
+    height: 40px;
+    padding-left: 20px;
+    border: 1px solid transparent; /* 투명을 넣지 않으면 들썩댐 */
+    color: #aaa;
+    line-height: 40px;
+}
+.gnb ul li a:hover{border-bottom: 1px solid #fff;}
+.gnb ul li a.sup{line-height: 34px;}
+.gnb ul li a sup{font-size: 10px;}
+.gnb>li:nth-child(1):hover ul{height: 123px;}
+.gnb>li:nth-child(2):hover ul{height: 164px;}
+.gnb>li:nth-child(3):hover ul{height: 123px;}
+.gnb>li:nth-child(4):hover ul{height: 82px;}
+
+/* util */
+.util li a{
+    display: block;
+    padding: 10px;
+    color: #a5a5a5;
+    font-size: 0.8em;
+    text-align: right;
+}
+
+/* member */
+.btn-member{
+    position: absolute;
+    top: 20px; right: 20px;
+    color: #fff;
+}
+
+.btn-member::after{
+    content: '\f005';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400; /* 400 = 빈 별, 900 = 찬 별 */
+    font-size: 25px;
+ }
+ .btn-member:checked + label::after{font-weight: 900;}
+ .btn-member:checked ~ .member{height: 326.47px;}
+
+ .member{
+    overflow: hidden;
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    height: 0;
+    background: #111;
+    color: #fff;
+    transition: height 0.5s;
+ }
+ .member .wrap{
+    max-width: 350px;
+    margin: auto;
+    padding: 20px 0;
+ }
+.member > div:nth-child(1) .wrap{border-bottom: 1px solid #fff;}
+.member .wrap > div:nth-child(1){text-align: center;}
+.member > div:nth-child(2) img{padding-top: 38px;}
+.member .wrap img{width: 85px;}
+.member .wrap .box{padding: 0 10px;}
+.member .wrap .box p{font-size: 12px;}
+.member .wrap .box p strong{display: block;}
+.member .wrap .box .btn-group{margin-top: 20px;}
+.member .wrap .box .btn-group button{
+    padding: 10px;
+    border: 1px solid #fff;
+    color:#fff;
+    transition: background-color 0.5s; /* background-color 입력하지 않으면 크기도 변함 */
+}
+.member .wrap .box .btn-group button:hover{
+    background: #fff;
+    color: #111;
+}
+
+/* section =========================================== */
+section{padding-top: 70px;}
+
+/* main-ad */
+.main-ad{background: #ebebca;}
+.main-ad .emblem{
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    animation: left 0.5s linear;
+
+}
+.main-ad .emblem a{
+    height: 34px;
+    margin-top: 20px;
+    padding: 0 10px;
+    border: 2px solid #829816;
+    border-radius: 3px;
+    color: #829816;
+    line-height: 34px;
+    text-align: center;
+}
+.main-ad .emblem a:hover{background: #829816; color :#fff;}
+.main-ad .flavor{
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    animation: right 0.5s linear;
+}
+.main-ad .flavor img:nth-child(1){margin-left: -55px;}
+.main-ad .flavor img:nth-child(2){padding: 20px;}
+
+/* product */
+.product{
+    background: url(../img/main2.jpg) no-repeat right bottom fixed; /* position이 아니라 여기에*/
+    background-size: cover;}
+
+.product .product-info{padding: 50px 0;}
+.product .product-info .wrap{
+    text-align: right;
+    margin-right: 10px;
+    color: #fff;
+}
+.product .product-info .wrap .text-box strong{font-size: 24px;}
+.product .product-info .wrap .text-box strong span{display: block;}
+.product .product-info .wrap .text-box p{color: #aaa; font-size: 12px; line-height: 22px;}
+.product .product-info .wrap .text-box p em{color: #fff;}
+.product .product-info .wrap .text-box a{
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+}
+.product .product-info .wrap .text-box a:hover{
+    background: #fff;
+    color: #000;
+}
+.product .product-info .bg{
+    display: none;
+}
+/* .product .product-list{}
+.product .product-list h3{}
+.product .product-list .wrap{
+    position: relative;
+}
+.product .product-list .wrap img{}
+.product .product-list .wrap a{display: none;}
+.product .product-list .wrap a{display: none; position: relative; }
+.product .product-list .wrap:hover a{display: block;}
+.product .product-list .wrap a .dl_wrap{
+    position: absolute;
+    width: 100%;
+    display: block;
+    bottom: 0;}
+.product .product-list .wrap a dl dt,
+.product .product-list .wrap a dl dd{
+    /* position: absolute;
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 14px;
+    transition: 0.5; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+    /* background: rgba(0, 0, 0, 0.5); */
+    /* color: #fff; */
+    /* font-size: 14px; */
+
+/* } */
+/* .product .product-list .wrap a::after{display: block;} */
+
+.product .product-list{
+    padding: 50px 0;
+    background: rgba(255,255,255,0.2);
+}
+.product .product-list h3{
+    padding-bottom: 20px;
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    text-shadow: 0 0 0 #fff;
+}
+.product .product-list .wrap{
+    overflow: hidden;
+    position: relative;
+    margin: 5px;
+}
+.product .product-list .wrap img{
+    width: 100%;
+    display: block;
+}
+.product .product-list .wrap a{
+    position: absolute;
+    bottom: 0;
+    /* bottom: -60px; */
+    /* left: -265px; 옆으로 움직일 때 */
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    height: 60px;
+    /* 오른쪽 여백은 화살표 영역이 더해진 값 */
+    padding: 10px 30px 10px 10px;
+    box-sizing: border-box;
+    transition: bottom 0.3s;
+    /* transition: left 0.7s; 옆으로 움직일 때 */
+    
+}
+.product .product-list .wrap:hover a{
+    bottom: 0;
+    /* left: 0; 옆으로 움직일 때 */
+}
+.product .product-list .wrap a dl dt,
+.product .product-list .wrap a dl dd{
+    /* ☆☆ 크기가 정해져 있어야 함 ☆☆*/
+    /* ▼ 영역을 벗어난 내용을 숨겨준다 */
+    overflow: hidden;
+    /* ▼ 텍스트가 넘쳤을 때 ... 표시 */
+    text-overflow: ellipsis;
+    /* ▼ 줄바꿈을 하지 않는다 */
+    white-space: nowrap;
+}
+.product .product-list .wrap a dl dd{
+    padding-top : 2px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+.product .product-list .wrap a::after{
+    position: absolute;
+    right: 10px;
+    top: 50%; transform: translateY(-50%);
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/* reserve */
+/* .reserve{
+    position: relative;
+    background: url(../img/main3.jpg) no-repeat center fixed;
+    background-size: cover;}
+.reserve h2{
+    padding: 20px 0;
+    color: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 2em;
+}
+.reserve h2 sup{}
+
+.reserve-info{}
+.reserve-info ul li .wrap{text-align: center; padding: 30px 0;}
+.reserve-info ul li .wrap span{
+    display: block;
+    color: #fff;
+}
+
+
+
+.reserve-store{
+    height: 600px;
+    position: relative;
+    text-align: center;
+}
+.reserve-store .rotate{  
+    width: 334px;
+    height: 334px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+.reserve-store .rotate img{transition: 0.2s;}
+.reserve-store .rotate .front,
+.reserve-store .rotate .back{
+    
+}
+
+.reserve-store .rotate .front{}
+.reserve-store .rotate .back{
+    position: absolute;
+    top: 0;
+    display: none;
+}
+.reserve-store .rotate:hover .front{transform: translateX(180deg);}
+.reserve-store .rotate:hover .back{display: block;}
+.reserve-store .rotate .back a{
+    position: absolute;
+    display: inline-block;
+    top: 68%;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 110px;
+    line-height: 44px;
+    border: 1px solid #829816;
+    border-radius: 3px;
+}
+.reserve-store .rotate .back a:hover{
+    background: #829816;
+    color: #fff;
+}
+
+// 답
+/* reserve */
+.reserve{
+    background: url(../img/main3.jpg) no-repeat center fixed;
+    background-size: cover;
+    padding: 50px 0;
+}
+.reserve h2{
+    padding-top: 50px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 4px #fff;
+}
+.reserve h2 sup{font-size: 0.5em;}
+
+.reserve-info{
+    padding: 20px 0;
+}
+.reserve-info ul li .wrap{
+    margin: 20px;
+    text-align: center;
+}
+.reserve-info ul li .wrap span{
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+}
+.reserve-store .rotate{
+    width: 334px;
+    height: 334px;
+    margin: auto;
+
+}
+.reserve-store .rotate .front,
+.reserve-store .rotate .back{
+    position: absolute;
+    /* 뒤집어지면 숨겨준다. */
+    backface-visibility: hidden;
+    transition: 0.5s;
+}
+
+.reserve-store .rotate .front{transform: rotateY(0deg);}
+.reserve-store .rotate .back{transform: rotateY(180deg);}
+.reserve-store .rotate:hover .front{transform: rotateY(180deg);}
+.reserve-store .rotate:hover .back{transform: rotateY(0deg);}
+.reserve-store .rotate .back a{
+    padding: 10px 20px;
+    border: 1px solid #a26e49;
+    border-radius: 3px;
+    color: #a26e49;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.reserve-store .rotate .back a:hover{
+    background: #a26e49;
+    color:#fff;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer{
+    padding: 20px 0;
+    background: #282828;
+    color:#fff;
+    font-size: 0.8em;
+    text-align: center;
+}
+footer .info{padding: 20px 0;}
